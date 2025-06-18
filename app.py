@@ -1,4 +1,3 @@
-
 import streamlit as st
 import fitz  # PyMuPDF
 import numpy as np
@@ -63,10 +62,10 @@ def is_greeting(user_input):
 def is_confusion_expression(user_input):
     """Detect expressions of confusion or uncertainty"""
     confusion_phrases = [
-        "i don't know", "i dont know", "don't know", "dont know", "not sure", "i'm not sure", "im not sure",
-        "no idea", "unsure", "i don't understand", "don't understand", "i dont understand", "dont understand",
-        "i'm confused", "im confused", "confused", "help me", "explain", "i have no idea",
-        "no clue", "i'm clueless", "clueless", "lost", "i'm lost", "im lost", "huh", "what", "sorry", "help me with this"
+        "i don't know", "i dont know", "don't know", "not sure", "i'm not sure", 
+        "no idea", "unsure", "i don't understand", "don't understand",
+        "confused", "help me", "explain", "i have no idea",
+        "no clue", "clueless", "lost", "i'm lost"
     ]
     input_lower = user_input.lower().strip()
     return any(phrase in input_lower for phrase in confusion_phrases)
@@ -401,13 +400,17 @@ if uploaded_file and st.session_state.chunks is not None:
 else:
     st.info("👆 Please upload a course PDF in the sidebar to begin learning!")
     st.markdown("""
-    ### How to use this ✨AI Tutor:
+    ### How to use this Enhanced AI Tutor:
     
     1. **Upload your course material** (PDF) using the sidebar
     2. **Ask questions** about the content in the chat
     3. **Express confusion freely** - the tutor uses AI to understand if your confusion relates to the course material
     4. **Get personalized guidance** - the tutor provides targeted help based on the most relevant parts of your material
     
+    **New Features:**
+    - ✨ **Smart Context Detection**: Uses AI embeddings instead of hardcoded keywords
+    - 🎯 **Targeted Confusion Support**: Finds the most relevant content for your specific confusion
+    - 📚 **Universal Compatibility**: Works with any subject matter or course content
     
     **Note:** Your chat history is session-based and will be cleared when you close the browser.
     """)
